@@ -109,3 +109,14 @@ jobs:
     - name: Build aria2
       run: |
         make -j"$(nproc 2> /dev/null || sysctl -n hw.ncpu)" check
+    - name: View current dir
+      run: |
+        ls -la ./
+    - name: View workspace dir
+      run: |
+        ls -la ${{ github.workspace }}
+    # - name: Upload
+    #   uses: actions/upload-artifact@v4
+    #   with:
+    #     name: aria2c-${{ matrix.os }}-${{ matrix.version }}
+    #     path: ${{ github.workspace }}
