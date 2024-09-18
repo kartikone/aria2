@@ -4,16 +4,26 @@ on: workflow_dispatch
 jobs:
   build:
     strategy:
+      # matrix:
+      #   os: [ubuntu-22.04, macos-14]
+      #   compiler: [gcc, clang]
+      #   crypto: [openssl, gnutls]
+      #   bittorrent: [with-bt, without-bt]
+      #   exclude:
+      #   - os: macos-14
+      #     crypto: gnutls
+      #   - crypto: openssl
+      #     bittorrent: without-bt
       matrix:
-        os: [ubuntu-22.04, macos-14]
-        compiler: [gcc, clang]
-        crypto: [openssl, gnutls]
-        bittorrent: [with-bt, without-bt]
-        exclude:
-        - os: macos-14
-          crypto: gnutls
-        - crypto: openssl
-          bittorrent: without-bt
+        os: [ubuntu-22.04]
+        compiler: [clang]
+        crypto: [openssl]
+        bittorrent: [with-bt]
+        # exclude:
+        # - os: macos-14
+        #   crypto: gnutls
+        # - crypto: openssl
+        #   bittorrent: without-bt
 
     runs-on: ${{ matrix.os }}
 
